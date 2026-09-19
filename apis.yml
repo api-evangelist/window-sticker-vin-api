@@ -1,0 +1,49 @@
+name: Window Sticker VIN API
+description: >-
+  A free, keyless VIN-lookup service that returns the original factory window sticker (Monroney label) PDF plus an NHTSA
+  vPIC specification decode for any 17-character US VIN. Serves decoded vehicle specs, EPA fuel economy, crash ratings,
+  and recalls over an open, CORS-enabled JSON API with no registration.
+url: https://raw.githubusercontent.com/api-evangelist/window-sticker-vin-api/refs/heads/main/apis.yml
+created: '2026-09-19'
+modified: '2026-09-19'
+specificationVersion: '0.21'
+tags:
+  - Automotive
+  - Vehicle data
+  - VIN decoding
+  - Monroney
+  - Window sticker
+  - Government open data
+  - Auto retail
+  - Dealer tooling
+apis:
+  - name: Window Sticker VIN API
+    description: >-
+      Keyless REST/JSON API for VIN decoding and factory window sticker (Monroney label) PDF lookup. Endpoints: GET
+      /api/v1/vin/{vin} and GET /api/sticker/{vin}.
+    humanURL: https://windowsticker.org/api-docs
+    baseURL: https://windowsticker.org
+    tags:
+      - Automotive
+      - Vehicle data
+      - VIN decoding
+      - Monroney
+      - Window sticker
+      - Government open data
+      - Auto retail
+      - Dealer tooling
+    properties:
+      - type: OpenAPI
+        url: https://windowsticker.org/openapi.json
+      - type: LLMsTxt
+        url: https://windowsticker.org/llms.txt
+      - type: Documentation
+        url: https://windowsticker.org/api-docs
+maintainers:
+  - FN: Window Sticker VIN API
+    url: https://windowsticker.org
+generated:
+  by: apis.io/add
+  model: claude-opus-4-8
+  confidence: 90
+  at: '2026-09-19T01:43:34.140Z'
