@@ -1,0 +1,163 @@
+openapi: 3.1.0
+info:
+  title: Window Sticker VIN API
+  version: 1.0.0
+  description: Free, keyless API returning the original factory window sticker (Monroney label) PDF and
+    a full NHTSA vPIC specification decode for any 17-character US VIN. No registration, no API key, CORS
+    enabled.
+  license:
+    name: Free to use
+    url: https://windowsticker.org/api-docs
+  contact:
+    url: https://windowsticker.org/api-docs
+servers:
+- url: https://windowsticker.org
+paths:
+  /api/v1/vin/{vin}:
+    get:
+      summary: Decode a VIN and report window sticker availability
+      operationId: getVin
+      parameters:
+      - name: vin
+        in: path
+        required: true
+        description: 17-character VIN. Never contains I, O or Q.
+        schema:
+          type: string
+          pattern: ^[A-HJ-NPR-Z0-9]{17}$
+      - name: sticker
+        in: query
+        required: false
+        description: Set to false to skip the label fetch and return the decode only. Faster.
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: Decoded vehicle and window sticker availability
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VinResponse'
+        '400':
+          description: The VIN failed validation
+  /api/sticker/{vin}:
+    get:
+      summary: Fetch the original factory window sticker PDF
+      operationId: getSticker
+      parameters:
+      - name: vin
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[A-HJ-NPR-Z0-9]{17}$
+      - name: download
+        in: query
+        required: false
+        description: Set to 1 for a Content-Disposition attachment.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The manufacturer PDF, unmodified
+          content:
+            application/pdf: {}
+        '404':
+          description: No label published for this VIN
+components:
+  schemas:
+    VinResponse:
+      type: object
+      properties:
+        ok:
+          type: boolean
+        vin:
+          type: string
+        warning:
+          type:
+          - string
+          - 'null'
+        vehicle:
+          type:
+          - object
+          - 'null'
+          properties:
+            year:
+              type:
+              - string
+              - 'null'
+            make:
+              type:
+              - string
+              - 'null'
+            model:
+              type:
+              - string
+              - 'null'
+            trim:
+              type:
+              - string
+              - 'null'
+            bodyClass:
+              type:
+              - string
+              - 'null'
+            driveType:
+              type:
+              - string
+              - 'null'
+            doors:
+              type:
+              - string
+              - 'null'
+            engine:
+              type: object
+              properties:
+                displacement:
+                  type:
+                  - string
+                  - 'null'
+                cylinders:
+                  type:
+                  - string
+                  - 'null'
+                fuel:
+                  type:
+                  - string
+                  - 'null'
+            transmission:
+              type:
+              - string
+              - 'null'
+            plant:
+              type:
+              - string
+              - 'null'
+            manufacturer:
+              type:
+              - string
+              - 'null'
+        windowSticker:
+          type: object
+          properties:
+            supported:
+              type: boolean
+              description: Does this make publish labels at all?
+            available:
+              type:
+              - boolean
+              - 'null'
+              description: Is there one for this specific VIN?
+            bytes:
+              type:
+              - integer
+              - 'null'
+            pdf:
+              type:
+              - string
+              - 'null'
+              format: uri
+            page:
+              type: string
+              format: uri

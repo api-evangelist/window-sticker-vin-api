@@ -1,0 +1,19 @@
+generated: '2026-09-20'
+method: searched
+source: https://windowsticker.org/api-docs
+summary: >-
+  No numeric rate limit is published and no rate-limit response headers are documented. The
+  provider states a fair-use expectation only.
+limit_count: 0
+limits: []
+headers: []
+exhaustion_status: null
+fair_use:
+  documented: true
+  statement: >-
+    "There is no key and no hard quota today ... please don't defeat that by enumerating VINs
+    at speed."
+note: >-
+  limit_count is 0 because no enforced/documented limit exists, not because the docs were
+  unreadable. No X-RateLimit-*, RateLimit-* or Retry-After headers are documented, and no 429
+  behaviour is specified. An agent should throttle voluntarily per the fair-use request.

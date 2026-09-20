@@ -1,0 +1,25 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://windowsticker.org/api/v1",
+      "service-desc": [
+        {
+          "href": "https://windowsticker.org/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://windowsticker.org/api-docs",
+          "type": "text/html"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://windowsticker.org/status",
+          "type": "text/html"
+        }
+      ]
+    }
+  ]
+}

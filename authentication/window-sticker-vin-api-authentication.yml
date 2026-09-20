@@ -1,0 +1,18 @@
+generated: '2026-09-20'
+method: derived
+source: >-
+  openapi/window-sticker-vin-api-openapi.yml (no securitySchemes, no security requirement)
+  cross-checked against https://windowsticker.org/api-docs
+summary: >-
+  Public, keyless API. The OpenAPI declares no securitySchemes and no security requirement,
+  and the docs confirm it: "Free, keyless, CORS-enabled. No registration and no tiers."
+  Both operations are anonymous GET requests. There is nothing to authenticate.
+schemes: []
+requires_auth: false
+public: true
+cors:
+  enabled: true
+  note: Documented as CORS-enabled for browser-side use.
+notes: >-
+  No API key, no OAuth, no OpenID Connect, no mTLS. No /.well-known/oauth-authorization-server
+  or /.well-known/openid-configuration is served (both 404), consistent with a keyless service.

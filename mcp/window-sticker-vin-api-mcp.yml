@@ -1,0 +1,36 @@
+generated: '2026-09-20'
+method: derived
+source: >-
+  Derived candidate tool list from openapi/window-sticker-vin-api-openapi.yml. No hosted or
+  local MCP server is published: llms.txt names no MCP endpoint, no mcp.windowsticker.org host
+  resolves, and the docs describe only the REST/JSON API.
+summary: >-
+  No official MCP server exists. This is a candidate tool list derived from the two OpenAPI
+  operations so an operator could stand one up; nobody ships a server today.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: none
+  verified: derived
+tools:
+- name: getVin
+  status: candidate
+  description: >-
+    Decode a 17-character US VIN via NHTSA vPIC and report factory window sticker (Monroney
+    label) availability. Optional sticker=false returns the decode only, faster.
+  rest: getVin
+  method: GET
+  path: /api/v1/vin/{vin}
+- name: getSticker
+  status: candidate
+  description: >-
+    Fetch the original factory window sticker PDF for a VIN, unmodified. 404 when no label is
+    published for that VIN.
+  rest: getSticker
+  method: GET
+  path: /api/sticker/{vin}
+notes: >-
+  Both operations are anonymous GET calls with no request body, so an MCP wrapper's inputSchema
+  would be the VIN path parameter plus the optional query parameter of each operation.

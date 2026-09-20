@@ -1,0 +1,31 @@
+generated: '2026-09-20'
+method: derived
+source: >-
+  Derived from the 4xx responses in openapi/window-sticker-vin-api-openapi.yml, enriched from
+  https://windowsticker.org/api-docs.
+summary: >-
+  Two documented error conditions, signalled by HTTP status only. Responses are not RFC 9457
+  problem+json; the decode endpoint carries a warning string in the normal JSON body when a
+  lookup is partial.
+format: http-status
+problem_json: false
+problem_types:
+- status: 400
+  operation: getVin
+  title: VIN failed validation
+  meaning: >-
+    The VIN did not match ^[A-HJ-NPR-Z0-9]{17}$ — wrong length, or it contains I, O or Q, which
+    a real VIN never does.
+  remediation: Send a 17-character VIN using only the allowed characters.
+- status: 404
+  operation: getSticker
+  title: No label published for this VIN
+  meaning: >-
+    No factory window sticker PDF is available for this specific VIN. Common on older vehicles
+    and on makes with no public label service; the make may still be "supported" overall.
+  remediation: >-
+    Use GET /api/v1/vin/{vin} to read windowSticker.supported / windowSticker.available before
+    requesting the PDF. The decode is still returned when no label exists.
+notes: >-
+  A partial or best-effort decode is not an error: getVin returns 200 with ok and a nullable
+  "warning" string rather than a 4xx. There is no documented 5xx contract.

@@ -1,0 +1,37 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enrichment overlay for Window Sticker VIN API
+  version: 1.0.0
+extends: ../openapi/window-sticker-vin-api-openapi.yml
+x-provenance:
+  generated: '2026-09-20'
+  method: generated
+  source: >-
+    Enhancements derived from https://windowsticker.org/api-docs and how-it-works; the original
+    contract is never mutated — these actions layer non-destructive annotations.
+actions:
+  - target: $.info
+    description: Record the keyless/CORS access model and fair-use expectation as machine-readable hints.
+    update:
+      x-access-model: keyless-public
+      x-cors: true
+      x-fair-use: >-
+        No API key and no hard quota; do not enumerate VINs at speed. No rate-limit headers.
+  - target: $.paths['/api/v1/vin/{vin}'].get
+    description: Tag the decode operation and flag it as safe, read-only and cacheable for agents.
+    update:
+      x-agent-safe: true
+      x-side-effects: none
+      x-cacheable: true
+      tags:
+        - VIN decode
+  - target: $.paths['/api/sticker/{vin}'].get
+    description: Tag the PDF operation and note that 404 is an expected, non-error outcome.
+    update:
+      x-agent-safe: true
+      x-side-effects: none
+      x-expected-404: >-
+        A 404 means no factory label is published for this VIN; check windowSticker.available
+        from the decode endpoint first.
+      tags:
+        - Window sticker PDF

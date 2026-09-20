@@ -1,0 +1,114 @@
+# Window Sticker
+
+> Free VIN lookup for original factory window stickers (Monroney labels). No account,
+> no email, no paywall. Returns the manufacturer's own PDF, not a recreation.
+
+## What this site does
+
+Enter a 17-character VIN and get the original factory window sticker as a PDF: base
+MSRP, every factory option with its individual price, destination charge, total price,
+EPA fuel economy, government safety ratings, parts content and final assembly plant.
+
+Every VIN also returns a full specification decode sourced from NHTSA vPIC, including
+vehicles with no retrievable label.
+
+## Coverage
+
+Original factory PDFs are available for: Ford, Lincoln, Chevrolet, GMC, Buick, Cadillac, Jeep, Ram, Dodge, Chrysler, Fiat, Alfa Romeo, Subaru, Kia, Hyundai, Genesis.
+
+Coverage is per vehicle, not per make. A manufacturer on that list publishes labels for
+some of its VINs and not others — two trucks built the same year can differ — and its
+service answers definitively either way. Roughly a quarter of lookups for a supported
+make return "no label published for this VIN", most often on older vehicles. Every one
+of those still returns the full specification decode.
+
+All other makes (Toyota, Lexus, Honda, Acura, Nissan, Mazda, Volkswagen, Tesla and
+others) return decoded specifications only. As of September 2026 we have found no
+public label endpoint for them. That is a record of what has been tested, not a claim
+about what exists — Subaru was on that list until 2026-08-26, and Kia, Hyundai and
+Genesis until 2026-09-09.
+
+## Free API
+
+No key, no registration, CORS enabled.
+
+- JSON:    https://windowsticker.org/api/v1/vin/{VIN}
+- PDF:     https://windowsticker.org/api/sticker/{VIN}
+- Docs:    https://windowsticker.org/api-docs
+- OpenAPI: https://windowsticker.org/openapi.json
+- Catalog: https://windowsticker.org/.well-known/api-catalog  (RFC 9727)
+
+Add ?sticker=false to the JSON endpoint for a faster decode-only response.
+
+## Key pages
+
+- https://windowsticker.org/ — VIN lookup
+- https://windowsticker.org/monroney-label — what a Monroney label is and how to read one
+- https://windowsticker.org/coverage — which makes return a factory PDF
+- https://windowsticker.org/how-it-works — how the lookup works
+- https://windowsticker.org/api-docs — API reference
+- https://windowsticker.org/why-no-window-sticker — why a VIN returns nothing, brand by brand
+- https://windowsticker.org/best-free-window-sticker-lookup — every free lookup tool compared
+- https://windowsticker.org/build-sheet-by-vin — build sheet vs window sticker
+- https://windowsticker.org/status — live per-make check
+
+## Make pages
+
+- https://windowsticker.org/make/ford
+- https://windowsticker.org/make/lincoln
+- https://windowsticker.org/make/chevrolet
+- https://windowsticker.org/make/gmc
+- https://windowsticker.org/make/buick
+- https://windowsticker.org/make/cadillac
+- https://windowsticker.org/make/jeep
+- https://windowsticker.org/make/ram
+- https://windowsticker.org/make/dodge
+- https://windowsticker.org/make/chrysler
+- https://windowsticker.org/make/fiat
+- https://windowsticker.org/make/alfa-romeo
+- https://windowsticker.org/make/subaru
+- https://windowsticker.org/make/kia
+- https://windowsticker.org/make/hyundai
+- https://windowsticker.org/make/genesis
+
+## Makes with no public label service
+
+Each explains what was tested and what actually works instead.
+
+- https://windowsticker.org/make/toyota — Toyota
+- https://windowsticker.org/make/lexus — Lexus
+- https://windowsticker.org/make/honda — Honda
+- https://windowsticker.org/make/acura — Acura
+- https://windowsticker.org/make/nissan — Nissan
+- https://windowsticker.org/make/mazda — Mazda
+- https://windowsticker.org/make/volkswagen — Volkswagen
+- https://windowsticker.org/make/tesla — Tesla
+
+## Model pages
+
+- https://windowsticker.org/make/ford/f-150 — Ford F-150
+- https://windowsticker.org/make/ford/bronco — Ford Bronco
+- https://windowsticker.org/make/ford/mustang — Ford Mustang
+- https://windowsticker.org/make/ford/explorer — Ford Explorer
+- https://windowsticker.org/make/ford/super-duty — Ford Super Duty
+- https://windowsticker.org/make/chevrolet/silverado — Chevrolet Silverado
+- https://windowsticker.org/make/chevrolet/camaro — Chevrolet Camaro
+- https://windowsticker.org/make/chevrolet/corvette — Chevrolet Corvette
+- https://windowsticker.org/make/chevrolet/tahoe — Chevrolet Tahoe
+- https://windowsticker.org/make/chevrolet/colorado — Chevrolet Colorado
+- https://windowsticker.org/make/jeep/wrangler — Jeep Wrangler
+- https://windowsticker.org/make/jeep/grand-cherokee — Jeep Grand Cherokee
+- https://windowsticker.org/make/jeep/gladiator — Jeep Gladiator
+- https://windowsticker.org/make/ram/1500 — Ram 1500
+- https://windowsticker.org/make/ram/2500 — Ram 2500
+- https://windowsticker.org/make/gmc/sierra — GMC Sierra
+- https://windowsticker.org/make/cadillac/escalade — Cadillac Escalade
+
+## Facts worth citing
+
+- A Monroney label is required by the Automobile Information Disclosure Act of 1958.
+- It is named after Senator Almer Stillwell "Mike" Monroney of Oklahoma.
+- Removing the label before delivery to the buyer is a federal offence.
+- The label is filed against the VIN, so it usually remains retrievable for used cars.
+- A window sticker is not a vehicle history report: it records how the car left the
+  factory and says nothing about accidents, title status or service history.

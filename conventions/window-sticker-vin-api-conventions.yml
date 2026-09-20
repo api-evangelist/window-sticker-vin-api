@@ -1,0 +1,61 @@
+generated: '2026-09-20'
+method: searched
+source: >-
+  https://windowsticker.org/api-docs + https://windowsticker.org/how-it-works, cross-checked
+  against openapi/window-sticker-vin-api-openapi.yml
+summary: >-
+  Cross-cutting semantics for a small, read-only, keyless REST/JSON API. Two GET operations,
+  no write surface, no auth, CORS enabled. Versioning is path-based (/api/v1). Responses are
+  a flat JSON envelope with an ok boolean; the PDF endpoint returns application/pdf directly.
+authentication:
+  style: none
+  note: Keyless and public. See authentication/window-sticker-vin-api-authentication.yml
+versioning:
+  style: uri-path
+  current: v1
+  spec_version: 1.0.0
+  note: The decode endpoint is namespaced /api/v1/; the PDF endpoint is /api/sticker/.
+pagination:
+  supported: false
+  note: Single-record lookups by VIN; no collections are returned.
+response_envelope:
+  format: json
+  fields: [ok, vin, warning, vehicle, windowSticker]
+  note: >-
+    getVin returns a JSON object with ok:boolean and nested vehicle/windowSticker objects.
+    getSticker returns raw application/pdf, or 404 when no label is published.
+error_shape:
+  style: http-status
+  problem_json: false
+  note: >-
+    400 when the VIN fails the ^[A-HJ-NPR-Z0-9]{17}$ pattern; 404 when no label exists.
+    Not RFC 9457 problem+json. See errors/window-sticker-vin-api-problem-types.yml
+rate_limit_signaling:
+  headers: []
+  note: >-
+    No rate-limit headers documented. Fair-use only: "no key and no hard quota today ...
+    please don't defeat that by enumerating VINs at speed." See rate-limits/.
+caching:
+  note: >-
+    Stickers are cached after first lookup because "a window sticker for a given VIN never
+    changes"; results are cached aggressively to reduce upstream manufacturer requests.
+cors:
+  enabled: true
+idempotency:
+  coverage: na
+  note: >-
+    Read-only API. Both operations are GET with no request body and no state change, so replay
+    protection does not apply. na leaves the denominator rather than scoring zero.
+reversibility:
+  grade: na
+  note: >-
+    Read-only API with no write, create, delete or mutating operation. There is nothing to
+    reverse, so reversibility is not applicable.
+dry_run_mode:
+  supported: na
+  note: Read-only API; a dry-run mode is not applicable with no side-effecting operation.
+cross_links:
+  errors: errors/window-sticker-vin-api-problem-types.yml
+  lifecycle: lifecycle/window-sticker-vin-api-lifecycle.yml
+  authentication: authentication/window-sticker-vin-api-authentication.yml
+  rate_limits: rate-limits/window-sticker-vin-api-rate-limits.yml

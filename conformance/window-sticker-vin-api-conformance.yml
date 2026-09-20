@@ -1,0 +1,33 @@
+generated: '2026-09-20'
+method: derived
+source: >-
+  openapi/window-sticker-vin-api-openapi.yml, well-known/window-sticker-vin-api-api-catalog.json,
+  and https://windowsticker.org/api-docs
+summary: >-
+  Two cross-cutting standards are genuinely conformed to: OpenAPI 3.1.0 (the published contract)
+  and RFC 9727 (the served /.well-known/api-catalog linkset). No sector API standard is declared —
+  the automotive VIN-lookup market has no OpenRTB/FHIR/OData-style contract standard, and the data
+  sources (NHTSA vPIC, EPA) are upstream feeds, not a contract this API conforms to. Reward-only:
+  no penalty for the absence of a standard that does not exist for this market.
+conformance:
+- id: openapi-3.1
+  conforms: true
+  evidence: openapi.openapi == "3.1.0" in openapi/window-sticker-vin-api-openapi.yml
+- id: rfc9727
+  conforms: true
+  evidence: >-
+    application/linkset+json served at https://windowsticker.org/.well-known/api-catalog (HTTP 200),
+    linking service-desc (openapi.json), service-doc (api-docs) and status.
+- id: cors
+  conforms: true
+  evidence: 'Documented CORS-enabled at https://windowsticker.org/api-docs ("keyless, CORS-enabled").'
+- id: rfc9457
+  conforms: false
+  evidence: >-
+    Errors are signalled by HTTP status only; no application/problem+json is returned. See
+    errors/window-sticker-vin-api-problem-types.yml
+domain_standard:
+  present: false
+  note: >-
+    No domain-standard signature in the contract. VIN structure follows ISO 3779 by nature of the
+    input, but the API neither declares nor implements a domain API standard, so nothing is asserted.

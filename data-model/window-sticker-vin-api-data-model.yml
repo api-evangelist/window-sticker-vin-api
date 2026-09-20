@@ -1,0 +1,38 @@
+generated: '2026-09-20'
+method: derived
+source: components.schemas.VinResponse in openapi/window-sticker-vin-api-openapi.yml
+summary: >-
+  A single response entity, VinResponse, composed of two nested value objects (vehicle with an
+  embedded engine, and windowSticker). There are no id-referenced relationships between separate
+  resources — the model is a self-contained lookup document keyed by VIN.
+entities:
+- name: VinResponse
+  root: true
+  fields: [ok, vin, warning, vehicle, windowSticker]
+  key: vin
+- name: vehicle
+  embedded_in: VinResponse
+  fields: [year, make, model, trim, bodyClass, driveType, doors, engine, transmission, plant, manufacturer]
+  nullable: true
+- name: engine
+  embedded_in: vehicle
+  fields: [displacement, cylinders, fuel]
+- name: windowSticker
+  embedded_in: VinResponse
+  fields: [supported, available, bytes, pdf, page]
+relationships:
+- from: VinResponse
+  to: vehicle
+  type: has_one
+  via: vehicle
+- from: vehicle
+  to: engine
+  type: has_one
+  via: engine
+- from: VinResponse
+  to: windowSticker
+  type: has_one
+  via: windowSticker
+notes: >-
+  windowSticker.pdf is a URI to the manufacturer PDF served by GET /api/sticker/{vin};
+  windowSticker.page is a URI to the human viewer page. No cross-resource id references exist.

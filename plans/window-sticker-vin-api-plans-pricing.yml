@@ -1,0 +1,13 @@
+generated: '2026-09-20'
+method: searched
+source: https://windowsticker.org/api-docs
+summary: >-
+  The API is free with no tiers, no registration and no API key. There is no pricing page and
+  no paid plan to enumerate — the free public service is the entire offering.
+plan_count: 0
+free: true
+plans: []
+note: >-
+  Documented verbatim as "Free, keyless, CORS-enabled. No registration and no tiers" and "There
+  is no key and no hard quota today." plan_count is 0 because the provider publishes no priced
+  plans, not because pricing was unavailable — the honest measurement is that the service is free.

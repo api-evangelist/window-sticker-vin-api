@@ -1,0 +1,29 @@
+generated: '2026-09-20'
+method: probed
+source: >-
+  Live probes of conventional legal/compliance paths on windowsticker.org plus review of
+  well-known/, security/ and lifecycle/ artifacts harvested this run.
+summary: >-
+  No horizontal-regime signals with substance were found. This is a free, keyless, no-account
+  VIN-lookup service that collects no user registration data; there is a privacy page but none of
+  the canonical machine-readable signals (SBOM, subprocessor table, VPAT, GPC statement, DSR
+  portal, data-residency doc, AI transparency) are published. An empty signals set is the
+  measurement, not a gap in the probe.
+signals: {}
+probes:
+- url: https://windowsticker.org/privacy
+  status: 200
+  note: A privacy page exists but carries no canonical signal (no GPC honored statement, no DSR portal, no subprocessor table).
+- url: https://windowsticker.org/terms
+  status: 404
+- url: https://windowsticker.org/accessibility
+  status: 404
+- url: https://windowsticker.org/legal/subprocessors
+  status: 404
+- url: https://windowsticker.org/legal/dpa
+  status: 404
+- url: https://windowsticker.org/security/sbom
+  status: 404
+- url: https://windowsticker.org/.well-known/security.txt
+  status: 404
+checked: '2026-09-20'

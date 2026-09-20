@@ -1,0 +1,11 @@
+generated: '2026-09-20'
+method: generated
+source: >-
+  Packaged Agent Skills generated from the Window Sticker VIN API OpenAPI. Every step is grounded
+  in an operationId verified verbatim in ../openapi/window-sticker-vin-api-openapi.yml; cross-cutting
+  rules cite ../conventions/, ../errors/, ../authentication/ and ../rate-limits/.
+skills:
+  - file: window-sticker-vin-api-lookup-window-sticker.md
+    name: Look up a vehicle's window sticker by VIN
+    api: openapi/window-sticker-vin-api-openapi.yml
+    operations: [getVin, getSticker]

@@ -1,0 +1,39 @@
+generated: '2026-09-20'
+method: probed
+source: live probes of /.well-known/ on windowsticker.org
+summary: >-
+  One real document is served: an RFC 9727 API Catalog (application/linkset+json) at
+  /.well-known/api-catalog, pointing at the OpenAPI, the human docs and the status page.
+  That is a genuine WellKnown hit and the pointer is earned. Nothing else is served:
+  no security.txt (so NO SecurityTxt pointer), no OIDC/OAuth discovery, no ai-plugin.json,
+  and no A2A agent card. This is a keyless public API with no OAuth surface, so the
+  absence of the oauth/openid documents is expected, not a gap.
+pointer_basis: >-
+  WellKnown pointer emitted on the strength of the 200 application/linkset+json at
+  /.well-known/api-catalog. SecurityTxt NOT emitted — RFC 9116 is unimplemented.
+false_positive_watch: >-
+  windowsticker.org answers HTTP 404 with a full HTML app-shell (24,965 bytes,
+  <!DOCTYPE html>) for every unknown /.well-known/* path. Those are recorded below as
+  404 misses, not hits. api-catalog is the only path returning a real machine-readable body.
+hosts:
+- host: https://windowsticker.org
+  documents:
+  - path: /.well-known/api-catalog
+    status: 200
+    content_type: application/linkset+json
+    file: window-sticker-vin-api-api-catalog.json
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  checked: '2026-09-20'

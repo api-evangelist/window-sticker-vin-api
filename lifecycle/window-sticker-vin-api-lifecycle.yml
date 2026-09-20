@@ -1,0 +1,35 @@
+generated: '2026-09-20'
+method: searched
+source: >-
+  https://windowsticker.org/api-docs, https://windowsticker.org/status, llms.txt, and
+  info.version in openapi/window-sticker-vin-api-openapi.yml
+summary: >-
+  Single stable version (v1 / 1.0.0), path-versioned. No published deprecation policy, no
+  Sunset/Deprecation header commitment, and no SLA — expected for a free keyless service.
+  A live per-make status page is published.
+versioning:
+  scheme: uri-path
+  current_version: v1
+  spec_version: 1.0.0
+  note: The decode API lives under /api/v1/; a future breaking change would be a new path segment.
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecated_operations: []
+  note: >-
+    No deprecation or Sunset (RFC 8594) policy is documented, and no operation in the spec is
+    marked deprecated.
+sla:
+  published: false
+  note: Free service; no uptime or support-time commitment is published.
+status_page:
+  url: https://windowsticker.org/status
+  http_status: 200
+  note: >-
+    Live per-make check of label retrieval, referenced from llms.txt and the RFC 9727 api-catalog
+    (status link). Earns a StatusPage pointer.
+coverage_history:
+  note: >-
+    llms.txt records dated coverage additions as evidence of ongoing operation — Subaru added
+    2026-08-26; Kia, Hyundai and Genesis added 2026-09-09. This is coverage-expansion history,
+    not a formal versioned changelog.
