@@ -12,6 +12,15 @@ modified: '2026-09-20'
 specificationVersion: '0.21'
 tags:
   - Automotive
+  - Vehicle Data
+  - VIN Decoding
+  - Monroney
+  - Window sticker
+  - Government open data
+  - Auto Retail
+  - Dealer tooling
+tags_raw:
+  - Automotive
   - Vehicle data
   - VIN decoding
   - Monroney
@@ -28,6 +37,15 @@ apis:
     baseURL: https://windowsticker.org
     image: https://windowsticker.org/og.png
     tags:
+      - Automotive
+      - Vehicle Data
+      - VIN Decoding
+      - Monroney
+      - Window sticker
+      - Government open data
+      - Auto Retail
+      - Dealer tooling
+    tags_raw:
       - Automotive
       - Vehicle data
       - VIN decoding
