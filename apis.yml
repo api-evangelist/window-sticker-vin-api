@@ -121,3 +121,11 @@ common:
     url: rate-limits/window-sticker-vin-api-rate-limits.yml
   - type: Plans
     url: plans/window-sticker-vin-api-plans-pricing.yml
+x-correction-request:
+  requested: '2026-09-27'
+  source: https://github.com/api-evangelist/window-sticker-vin-api/issues/1
+  request: 'Corrections: (1) factory window-sticker PDFs cover 20 makes since 2026-09-21, not 16 (Toyota/Lexus
+    from MY2025; Nissan/Infiniti as Nissan''s own copy stamped "Unofficial Copy"; list at https://windowsticker.org/coverage
+    and llms.txt). (2) Auth: the API takes no key and no token (the 2026-09-21 run graded auth_clarity
+    "bearer"; our own authentication file says requires_auth: false). (3) There is an MCP server -- record
+    it.'
