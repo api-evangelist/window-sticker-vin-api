@@ -1,0 +1,28 @@
+{
+  "provider": "window-sticker-vin-api",
+  "sources": [
+    "_original/window-sticker-vin-api-openapi.json"
+  ],
+  "outputs": [
+    "window-sticker-vin-api-sticker-api-openapi.yml",
+    "window-sticker-vin-api-vin-api-openapi.yml"
+  ],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "window-sticker-vin-api-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "window-sticker-vin-api-openapi.json: tagged paths GET /api/v1/vin/{vin} -> Vin",
+    "window-sticker-vin-api-openapi.json: tagged paths GET /api/sticker/{vin} -> Sticker",
+    "window-sticker-vin-api-openapi.json: declared missing tag: Sticker",
+    "window-sticker-vin-api-openapi.json: declared missing tag: Vin",
+    "superseded outputs removed: window-sticker-vin-api-openapi.yml",
+    "apis.yml register: written (+2 apis, 2 total)"
+  ],
+  "skipped": [
+    "window-sticker-vin-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}

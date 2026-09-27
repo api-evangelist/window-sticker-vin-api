@@ -29,52 +29,52 @@ tags_raw:
   - Auto retail
   - Dealer tooling
 apis:
-  - name: Window Sticker VIN API
-    description: >-
-      Keyless REST/JSON API for VIN decoding and factory window sticker (Monroney label) PDF lookup. Endpoints: GET
-      /api/v1/vin/{vin} and GET /api/sticker/{vin}.
-    humanURL: https://windowsticker.org/api-docs
-    baseURL: https://windowsticker.org
-    image: https://windowsticker.org/og.png
-    tags:
-      - Automotive
-      - Vehicle Data
-      - VIN Decoding
-      - Monroney
-      - Window sticker
-      - Government open data
-      - Auto Retail
-      - Dealer tooling
-    tags_raw:
-      - Automotive
-      - Vehicle data
-      - VIN decoding
-      - Monroney
-      - Window sticker
-      - Government open data
-      - Auto retail
-      - Dealer tooling
-    properties:
-      - type: OpenAPI
-        url: openapi/window-sticker-vin-api-openapi.yml
-      - type: OpenAPI
-        url: https://windowsticker.org/openapi.json
-      - type: Documentation
-        url: https://windowsticker.org/api-docs
-      - type: APIReference
-        url: https://windowsticker.org/api-docs
-      - type: LLMsTxt
-        url: https://windowsticker.org/llms.txt
-      - type: Authentication
-        url: authentication/window-sticker-vin-api-authentication.yml
-      - type: Conventions
-        url: conventions/window-sticker-vin-api-conventions.yml
-      - type: DataModel
-        url: data-model/window-sticker-vin-api-data-model.yml
-      - type: ErrorCatalog
-        url: errors/window-sticker-vin-api-problem-types.yml
-      - type: Overlay
-        url: overlays/window-sticker-vin-api-openapi-overlay.yaml
+- aid: window-sticker-vin-api:window-sticker-vin-api-sticker-api
+  name: Window Sticker VIN API Sticker API
+  description: The Sticker API from Window Sticker VIN API — 1 operation(s) for sticker.
+  humanURL: https://windowsticker.org/api-docs
+  tags:
+  - Sticker
+  properties:
+  - type: OpenAPI
+    url: openapi/window-sticker-vin-api-sticker-api-openapi.yml
+  - type: Documentation
+    url: https://windowsticker.org/api-docs
+  - type: APIReference
+    url: https://windowsticker.org/api-docs
+  - type: LLMsTxt
+    url: https://windowsticker.org/llms.txt
+  - type: Authentication
+    url: authentication/window-sticker-vin-api-authentication.yml
+  - type: Conventions
+    url: conventions/window-sticker-vin-api-conventions.yml
+  - type: DataModel
+    url: data-model/window-sticker-vin-api-data-model.yml
+  - type: ErrorCatalog
+    url: errors/window-sticker-vin-api-problem-types.yml
+- aid: window-sticker-vin-api:window-sticker-vin-api-vin-api
+  name: Window Sticker VIN API Vin API
+  description: The Vin API from Window Sticker VIN API — 1 operation(s) for vin.
+  humanURL: https://windowsticker.org/api-docs
+  tags:
+  - Vin
+  properties:
+  - type: OpenAPI
+    url: openapi/window-sticker-vin-api-vin-api-openapi.yml
+  - type: Documentation
+    url: https://windowsticker.org/api-docs
+  - type: APIReference
+    url: https://windowsticker.org/api-docs
+  - type: LLMsTxt
+    url: https://windowsticker.org/llms.txt
+  - type: Authentication
+    url: authentication/window-sticker-vin-api-authentication.yml
+  - type: Conventions
+    url: conventions/window-sticker-vin-api-conventions.yml
+  - type: DataModel
+    url: data-model/window-sticker-vin-api-data-model.yml
+  - type: ErrorCatalog
+    url: errors/window-sticker-vin-api-problem-types.yml
 maintainers:
   - FN: Window Sticker VIN API
     url: https://windowsticker.org
@@ -89,6 +89,8 @@ x-enrichment:
   artifacts_added: 16
   pass: local-v3
 common:
+  - type: Overlay
+    url: overlays/window-sticker-vin-api-openapi-overlay.yaml
   - type: Website
     url: https://windowsticker.org/
   - type: Documentation

@@ -1,0 +1,41 @@
+openapi: 3.2.0
+info:
+  title: Window VIN Sticker API
+  version: 1.0.0
+  description: Free, keyless API returning the original factory window sticker (Monroney label) PDF and a full NHTSA vPIC specification decode for any 17-character US VIN. No registration, no API key, CORS enabled.
+  license:
+    name: Free to use
+    url: https://windowsticker.org/api-docs
+  contact:
+    url: https://windowsticker.org/api-docs
+servers:
+- url: https://windowsticker.org
+tags:
+- name: Sticker
+paths:
+  /api/sticker/{vin}:
+    get:
+      summary: Fetch the original factory window sticker PDF
+      operationId: getSticker
+      parameters:
+      - name: vin
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[A-HJ-NPR-Z0-9]{17}$
+      - name: download
+        in: query
+        required: false
+        description: Set to 1 for a Content-Disposition attachment.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The manufacturer PDF, unmodified
+          content:
+            application/pdf: {}
+        '404':
+          description: No label published for this VIN
+      tags:
+      - Sticker
