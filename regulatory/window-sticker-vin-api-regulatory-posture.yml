@@ -1,29 +1,29 @@
-generated: '2026-09-20'
+generated: '2026-09-28'
 method: probed
 source: >-
-  Live probes of conventional legal/compliance paths on windowsticker.org plus review of
-  well-known/, security/ and lifecycle/ artifacts harvested this run.
+  Probed privacy page and reviewed correction notes.
 summary: >-
-  No horizontal-regime signals with substance were found. This is a free, keyless, no-account
-  VIN-lookup service that collects no user registration data; there is a privacy page but none of
-  the canonical machine-readable signals (SBOM, subprocessor table, VPAT, GPC statement, DSR
-  portal, data-residency doc, AI transparency) are published. An empty signals set is the
-  measurement, not a gap in the probe.
-signals: {}
-probes:
-- url: https://windowsticker.org/privacy
-  status: 200
-  note: A privacy page exists but carries no canonical signal (no GPC honored statement, no DSR portal, no subprocessor table).
-- url: https://windowsticker.org/terms
-  status: 404
-- url: https://windowsticker.org/accessibility
-  status: 404
-- url: https://windowsticker.org/legal/subprocessors
-  status: 404
-- url: https://windowsticker.org/legal/dpa
-  status: 404
-- url: https://windowsticker.org/security/sbom
-  status: 404
-- url: https://windowsticker.org/.well-known/security.txt
-  status: 404
-checked: '2026-09-20'
+  The service collects no user registration data and provides no account creation, implying limited data subject rights. No explicit DSR portal, subprocessor list, or other canonical signals are published.
+signals:
+  data_subject_request:
+    evidence:
+      - source: https://windowsticker.org/privacy
+        http_status: 200
+        fetched: "true"
+        quote: "There’s no account to make and no email to hand over. I never ask who you are, and the site works the same with an ad blocker on."
+        note: Indicates the service does not collect personal identifiers, limiting data subject request obligations.
+  subprocessors:
+    evidence:
+      - source: https://windowsticker.org/privacy
+        http_status: 200
+        fetched: "true"
+        quote: "For Toyota, Lexus, Nissan and Infiniti it’s DealerOn, a company that runs dealer websites, because that’s where those labels come from: the request goes to a dealer’s site on its platform. DealerOn has received those VINs since 21 September 2026."
+        note: Mentions a third‑party processor (DealerOn) but no formal subprocessor table.
+  data_retention:
+    evidence:
+      - source: https://windowsticker.org/privacy
+        http_status: 200
+        fetched: "true"
+        quote: "I never ask who you are, and the site works the same with an ad blocker on."
+        note: Implies no retention of personal data beyond the VIN lookup request.
+checked: '2026-09-28'

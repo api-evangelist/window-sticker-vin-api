@@ -1,0 +1,21 @@
+generated: '2026-09-27'
+method: searched
+source:
+  - url: https://windowsticker.org/coverage
+    status: 200
+    note: "Coverage page lists 20 makes including Toyota, Lexus, Nissan, Infiniti (total 20 as of 2026-09-27)"
+  - url: https://windowsticker.org/api-docs
+    status: 200
+    note: "Auth section states the API requires no key or token (requires_auth: false)"
+  - url: https://windowsticker.org/api-docs
+    status: 200
+    note: "Mentions MCP server endpoint at https://windowsticker.org/api/sticker/{vin}"
+corrections:
+  - field: factory_window_sticker_coverage
+    original: "16 makes"
+    corrected: "20 makes (list includes Toyota, Lexus, Nissan, Infiniti)"
+  - field: authentication
+    original: "requires auth (bearer token)"
+    corrected: "no authentication required (requires_auth: false)"
+  - field: mcp_server
+    note: "MCP server present at /api/sticker/{vin}"

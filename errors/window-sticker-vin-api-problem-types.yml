@@ -9,7 +9,7 @@ summary: >-
   lookup is partial.
 format: http-status
 problem_json: false
-problem_types:
+problems:
 - status: 400
   operation: getVin
   title: VIN failed validation

@@ -2,7 +2,7 @@ overlay: 1.0.0
 info:
   title: API Evangelist enrichment overlay for Window Sticker VIN API
   version: 1.0.0
-extends: ../openapi/window-sticker-vin-api-openapi.yml
+extends: ../openapi/_original/window-sticker-vin-api-openapi.json
 x-provenance:
   generated: '2026-09-20'
   method: generated

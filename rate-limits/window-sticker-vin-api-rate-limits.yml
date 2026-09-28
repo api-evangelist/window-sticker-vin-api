@@ -1,6 +1,7 @@
 generated: '2026-09-20'
 method: searched
 source: https://windowsticker.org/api-docs
+name: Window Sticker VIN API API Rate Limits
 summary: >-
   No numeric rate limit is published and no rate-limit response headers are documented. The
   provider states a fair-use expectation only.

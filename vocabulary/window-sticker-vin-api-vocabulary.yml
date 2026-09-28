@@ -1,0 +1,17 @@
+generated: '2026-09-28'
+method: derived
+generator: derive-vocabulary.py
+source:
+- openapi/window-sticker-vin-api-sticker-api-openapi.yml
+- openapi/window-sticker-vin-api-vin-api-openapi.yml
+vocabulary:
+  name: Window Sticker VIN API Domain Vocabulary
+  description: 'Terms declared by Window Sticker VIN API''s own API contract: its resource groups, objects and enumerations, with the contract''s
+    definitions. Derived, not authored.'
+  version: '2026-09-28'
+  terms:
+  - term: VinResponse
+    definition: 'Object declared by the contract with fields: ok, vin, warning, vehicle, windowSticker.'
+    tags:
+    - Object
+    source: openapi/window-sticker-vin-api-vin-api-openapi.yml#/components/schemas/VinResponse

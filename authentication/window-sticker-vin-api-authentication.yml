@@ -7,7 +7,6 @@ summary: >-
   Public, keyless API. The OpenAPI declares no securitySchemes and no security requirement,
   and the docs confirm it: "Free, keyless, CORS-enabled. No registration and no tiers."
   Both operations are anonymous GET requests. There is nothing to authenticate.
-schemes: []
 requires_auth: false
 public: true
 cors:

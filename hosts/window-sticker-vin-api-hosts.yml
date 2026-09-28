@@ -1,0 +1,47 @@
+generated: '2026-09-28'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 2
+  own: 2
+  other_domain: 0
+  platform: 0
+  roles:
+  - api
+  - website
+hosts:
+- host: api.windowsticker.org
+  found_by:
+  - contract-discovery
+  types: []
+  serves: []
+  registrable_domain: windowsticker.org
+  role: api
+  relation: own
+- host: windowsticker.org
+  found_by:
+  - pointer
+  - apis[]
+  - probed
+  - docs-index
+  - spec-found
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - TermsOfService
+  - Website
+  - Documentation
+  - APIReference
+  - PrivacyPolicy
+  - StatusPage
+  - LLMsTxt
+  serves:
+  - docs
+  - spec
+  - cdn
+  vendor: cloudflare
+  registrable_domain: windowsticker.org
+  role: website
+  relation: own

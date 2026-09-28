@@ -1,7 +1,7 @@
 ---
 generated: '2026-09-20'
 method: generated
-name: Look up a vehicle's window sticker by VIN
+name: lookup-window-sticker
 description: >-
   Decode a 17-character US VIN, check whether an original factory window sticker (Monroney label)
   is available, and fetch the manufacturer PDF when it is.

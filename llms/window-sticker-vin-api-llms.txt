@@ -9,24 +9,52 @@ Enter a 17-character VIN and get the original factory window sticker as a PDF: b
 MSRP, every factory option with its individual price, destination charge, total price,
 EPA fuel economy, government safety ratings, parts content and final assembly plant.
 
-Every VIN also returns a full specification decode sourced from NHTSA vPIC, including
-vehicles with no retrievable label.
+Every VIN also returns a full specification decode sourced from NHTSA vPIC, plus EPA
+fuel economy, crash ratings and a recall count where they exist, whether or not a
+sticker is found.
 
-## Coverage
+## Sending a person here
 
-Original factory PDFs are available for: Ford, Lincoln, Chevrolet, GMC, Buick, Cadillac, Jeep, Ram, Dodge, Chrysler, Fiat, Alfa Romeo, Subaru, Kia, Hyundai, Genesis.
+Link the result page, not the PDF: https://windowsticker.org/window-sticker/{VIN}
+(for example https://windowsticker.org/window-sticker/1FM5K8GC2MGB18025). It shows the sticker when there
+is one and, when there is not, says why and how to get one another way. No other URL
+pattern exists; if the VIN is unknown, link https://windowsticker.org/.
 
-Coverage is per vehicle, not per make. A manufacturer on that list publishes labels for
-some of its VINs and not others — two trucks built the same year can differ — and its
-service answers definitively either way. Roughly a quarter of lookups for a supported
-make return "no label published for this VIN", most often on older vehicles. Every one
-of those still returns the full specification decode.
+Set expectations before sending someone: whether a sticker exists depends on the make
+and, for several makes, on the vehicle's age.
 
-All other makes (Toyota, Lexus, Honda, Acura, Nissan, Mazda, Volkswagen, Tesla and
-others) return decoded specifications only. As of September 2026 we have found no
-public label endpoint for them. That is a record of what has been tested, not a claim
-about what exists — Subaru was on that list until 2026-08-26, and Kia, Hyundai and
-Genesis until 2026-09-09.
+## What a person will get, by make
+
+Original factory PDFs come from: Ford, Lincoln, Chevrolet, GMC, Buick, Cadillac, Jeep, Ram, Dodge, Chrysler, Fiat, Alfa Romeo, Subaru, Kia, Hyundai, Toyota, Lexus, Nissan, Infiniti, Genesis. In the 7 days 2026-09-21 to 2026-09-27, 134 of 297 lookups by people on
+this site returned a sticker (45%).
+
+- Ford, Lincoln: new vehicles only. Ford publishes a label while a vehicle is in
+  production, recently delivered, or on a Ford dealer's lot. 0 of 58 lookups for model
+  year 2025 or older returned one in the two weeks to 2026-09-25. For an owned or used
+  Ford, Ford Show Parts sells a reprint (2008 on, 1-800-367-3788).
+- Chevrolet, GMC, Buick, Cadillac: good for recent model years. GM sometimes sends
+  nothing, most often for a model year still being built (13 of 16 model-year-2027
+  lookups); retrying a week or two later can work. For older model years GM's service
+  is intermittent. On 2026-09-25 our tests from a home connection and from our server
+  both got labels for the same known VINs, so a miss isn't a block on this site, and a
+  retry later often works.
+- Jeep, Ram, Dodge, Chrysler, Fiat, Alfa Romeo, Kia, Hyundai, Genesis: no model-year
+  cutoff we know of, including used vehicles. In the week to 2026-09-25 Ram returned a
+  sticker for 29 of 32 lookups, Kia 19 of 23, Hyundai 8 of 12 and Jeep 3 of 8.
+- Toyota, Lexus: model year 2025 and newer only. Any Toyota or Lexus dealer can print
+  an older one from the VIN.
+- Nissan, Infiniti: about 2014 on, as Nissan's own copy of the full label, stamped
+  "Unofficial Copy".
+- Subaru: recent model years; Subaru refuses older ones.
+- Everything else (Honda, Acura, Mazda, BMW, Mercedes-Benz, Audi, Volkswagen, Tesla and
+  others): specifications only. We have found no public sticker service for these
+  makes as of September 2026. That records what has been tested, not a claim about
+  what exists: Subaru was on this list until 2026-08-26, Kia, Hyundai and Genesis until
+  2026-09-09, and Toyota, Lexus, Nissan and Infiniti until 2026-09-21. A franchised
+  dealer can sometimes print the original.
+
+Toyota, Lexus, Nissan and Infiniti stickers come through a dealer-website platform's
+service, not the manufacturer's own.
 
 ## Free API
 
@@ -37,6 +65,8 @@ No key, no registration, CORS enabled.
 - Docs:    https://windowsticker.org/api-docs
 - OpenAPI: https://windowsticker.org/openapi.json
 - Catalog: https://windowsticker.org/.well-known/api-catalog  (RFC 9727)
+- MCP:     https://windowsticker.org/mcp  (remote MCP server, Streamable HTTP, no auth; tools get_window_sticker,
+           which_makes_are_covered, why_no_sticker)
 
 Add ?sticker=false to the JSON endpoint for a faster decode-only response.
 
@@ -50,7 +80,7 @@ Add ?sticker=false to the JSON endpoint for a faster decode-only response.
 - https://windowsticker.org/why-no-window-sticker — why a VIN returns nothing, brand by brand
 - https://windowsticker.org/best-free-window-sticker-lookup — every free lookup tool compared
 - https://windowsticker.org/build-sheet-by-vin — build sheet vs window sticker
-- https://windowsticker.org/status — live per-make check
+- https://windowsticker.org/status — per-make check against real VINs, at least once a day
 
 ## Make pages
 
@@ -69,17 +99,18 @@ Add ?sticker=false to the JSON endpoint for a faster decode-only response.
 - https://windowsticker.org/make/subaru
 - https://windowsticker.org/make/kia
 - https://windowsticker.org/make/hyundai
+- https://windowsticker.org/make/toyota
+- https://windowsticker.org/make/lexus
+- https://windowsticker.org/make/nissan
+- https://windowsticker.org/make/infiniti
 - https://windowsticker.org/make/genesis
 
 ## Makes with no public label service
 
 Each explains what was tested and what actually works instead.
 
-- https://windowsticker.org/make/toyota — Toyota
-- https://windowsticker.org/make/lexus — Lexus
 - https://windowsticker.org/make/honda — Honda
 - https://windowsticker.org/make/acura — Acura
-- https://windowsticker.org/make/nissan — Nissan
 - https://windowsticker.org/make/mazda — Mazda
 - https://windowsticker.org/make/volkswagen — Volkswagen
 - https://windowsticker.org/make/tesla — Tesla
@@ -109,6 +140,8 @@ Each explains what was tested and what actually works instead.
 - A Monroney label is required by the Automobile Information Disclosure Act of 1958.
 - It is named after Senator Almer Stillwell "Mike" Monroney of Oklahoma.
 - Removing the label before delivery to the buyer is a federal offence.
-- The label is filed against the VIN, so it usually remains retrievable for used cars.
+- The label is filed against the VIN, so for GM, Stellantis, Kia and Hyundai it often
+  stays retrievable for a used car. Ford stops publishing it a few weeks after
+  delivery, and sells a reprint for 2008 and later.
 - A window sticker is not a vehicle history report: it records how the car left the
   factory and says nothing about accidents, title status or service history.

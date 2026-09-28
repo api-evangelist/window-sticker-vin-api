@@ -1,6 +1,7 @@
 generated: '2026-09-20'
 method: searched
 source: https://windowsticker.org/api-docs
+name: Window Sticker VIN API API Plans
 summary: >-
   The API is free with no tiers, no registration and no API key. There is no pricing page and
   no paid plan to enumerate — the free public service is the entire offering.
