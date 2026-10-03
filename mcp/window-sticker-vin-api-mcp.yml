@@ -1,11 +1,31 @@
-generated: '2026-09-28'
+generated: '2026-10-03'
 method: probed
 source: https://windowsticker.org/mcp
-status: "405"
-content_type: text/html
-note: "MCP endpoint requires POST; remote MCP server confirmed"
+status: live
+note: Remote MCP server confirmed by a live initialize + tools/list on 2026-10-03 (Streamable HTTP, no auth). Also documented in https://windowsticker.org/llms.txt.
+server:
+  name: windowsticker
+  title: Window Sticker
+  version: 1.0.0
+  protocolVersion: '2025-06-18'
+  websiteUrl: https://windowsticker.org
 deployment:
   mode: remote
   endpoint: https://windowsticker.org/mcp
   auth: none
   verified: probed
+tools:
+- name: get_window_sticker
+  description: Look up the original factory window sticker (Monroney label) for a 17-character VIN, with an NHTSA specification decode. Returns
+    links (a result page and, when one exists, the label PDF), never the PDF itself.
+  inputs:
+  - vin
+- name: which_makes_are_covered
+  description: The 20 makes that return an original factory window sticker, by source, with the model years each answers for and the last day
+    it returned a label. Every other make gets a specification decode only.
+  inputs: []
+- name: why_no_sticker
+  description: Why a make, or a make and model year, has no window sticker here, and where to get one instead.
+  inputs:
+  - make
+  - model_year

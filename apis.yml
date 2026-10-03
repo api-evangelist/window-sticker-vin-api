@@ -2,8 +2,9 @@ name: Window Sticker VIN API
 
 description: A free, keyless VIN-lookup service that returns the original factory window sticker (Monroney label) PDF plus an NHTSA vPIC specification
   decode for any 17-character US VIN. Serves decoded vehicle specs, EPA fuel economy, crash ratings, and recalls over an open, CORS-enabled JSON
-  API with no registration, no API key and no paid tiers. Factory PDFs are available for 16 makes (Ford, GM, Stellantis, Subaru, Kia, Hyundai,
-  Genesis and more); every other make still returns a full specification decode.
+  API with no registration, no API key and no paid tiers. Factory PDFs are available for 20 makes (Ford, Lincoln, the GM and Stellantis brands, Subaru,
+  Kia, Hyundai, Genesis, Toyota and Lexus from model year 2025, and Nissan and Infiniti as Nissan's copy stamped "Unofficial Copy"); every other
+  make still returns a full specification decode. A remote MCP server at https://windowsticker.org/mcp exposes the same lookup to agents.
 
 image: https://windowsticker.org/og.png
 
@@ -11,7 +12,7 @@ url: https://raw.githubusercontent.com/api-evangelist/window-sticker-vin-api/ref
 
 created: '2026-09-19'
 
-modified: '2026-09-20'
+modified: '2026-10-03'
 
 specificationVersion: '0.21'
 
@@ -154,6 +155,12 @@ x-correction-request:
     Nissan''s own copy stamped "Unofficial Copy"; list at https://windowsticker.org/coverage and llms.txt). (2) Auth: the API takes no key and
     no token (the 2026-09-21 run graded auth_clarity "bearer"; our own authentication file says requires_auth: false). (3) There is an MCP server
     -- record it.'
+  applied: '2026-10-03'
+  applied_note: Applied by hand. (1) Description now says 20 makes, verified live on https://windowsticker.org/coverage and llms.txt (Ford, Lincoln,
+    Chevrolet, GMC, Buick, Cadillac, Jeep, Ram, Dodge, Chrysler, Fiat, Alfa Romeo, Subaru, Kia, Hyundai, Genesis, Toyota, Lexus, Nissan, Infiniti).
+    (2) Keyless auth confirmed already recorded (authentication requires_auth false). (3) MCP server confirmed already recorded; the manifest
+    now carries the live initialize result and tools/list (get_window_sticker, which_makes_are_covered, why_no_sticker; no auth). docs/corrections.yml
+    note that placed the MCP server at /api/sticker/{vin} corrected to /mcp.
 x-enrichment:
   date: '2026-09-28'
   status: enriched

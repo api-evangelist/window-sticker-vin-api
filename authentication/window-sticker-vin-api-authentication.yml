@@ -8,6 +8,14 @@ summary: >-
   and the docs confirm it: "Free, keyless, CORS-enabled. No registration and no tiers."
   Both operations are anonymous GET requests. There is nothing to authenticate.
 requires_auth: false
+schemes:
+- name: anonymous
+  type: none
+  applies_to:
+  - https://windowsticker.org/api/v1/vin/{vin}
+  - https://windowsticker.org/api/sticker/{vin}
+  - https://windowsticker.org/mcp
+  evidence: 'llms.txt (2026-10-03): "No key, no registration, CORS enabled." MCP initialize + tools/list succeeded with no credentials.'
 public: true
 cors:
   enabled: true
