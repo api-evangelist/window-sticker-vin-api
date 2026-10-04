@@ -121,6 +121,8 @@ apis:
   description: The Vin API from Window Sticker VIN API — 1 operation(s) for vin.
   humanURL: https://windowsticker.org/api-docs
   tags:
+  - VIN
+  tags_raw:
   - Vin
   properties:
   - type: OpenAPI
