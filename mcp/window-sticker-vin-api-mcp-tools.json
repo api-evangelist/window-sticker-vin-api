@@ -1,0 +1,485 @@
+{
+  "endpoint": "https://windowsticker.org/mcp",
+  "captured": "2026-10-20",
+  "method": "initialize + tools/list (anonymous, no tool called; roadmap#992)",
+  "protocol_version": "2025-06-18",
+  "server_info": {
+    "name": "windowsticker",
+    "title": "Window Sticker",
+    "version": "1.0.0",
+    "websiteUrl": "https://windowsticker.org"
+  },
+  "result": {
+    "tools": [
+      {
+        "name": "get_window_sticker",
+        "title": "Get a window sticker by VIN",
+        "description": "Look up the original factory window sticker (Monroney label) for a 17-character VIN, with an NHTSA specification decode. Returns links, never the PDF itself: `page` is the result page to give a person, and `pdf` is the label when one exists. For Toyota, Lexus, Nissan and Infiniti it returns only labels we already hold. Free, no key.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "vin": {
+              "type": "string",
+              "description": "17-character VIN. VINs never contain I, O or Q."
+            }
+          },
+          "required": [
+            "vin"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "vin": {
+              "type": "string"
+            },
+            "warning": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "vehicle": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "year": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "make": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "model": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "trim": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "bodyClass": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "driveType": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "doors": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "engine": {
+                      "type": "object",
+                      "properties": {
+                        "displacement": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "cylinders": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "fuel": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    "transmission": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "plant": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "manufacturer": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "NHTSA vPIC decode. Null when vPIC did not recognise the VIN."
+            },
+            "windowSticker": {
+              "type": "object",
+              "properties": {
+                "supported": {
+                  "type": "boolean",
+                  "description": "We have a source of original labels for this make."
+                },
+                "available": {
+                  "anyOf": [
+                    {
+                      "type": "boolean"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "true: an original label exists and `pdf` returns it. false: none came back. null: not known yet; see `note`."
+                },
+                "pdf": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "page": {
+                  "type": "string",
+                  "description": "The result page. Give this link to a person."
+                },
+                "note": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "paint": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "color": {
+                          "type": "string"
+                        },
+                        "code": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "Exterior color as printed on the label, with its paint code where the label carries one (Toyota; Hyundai and Genesis when paint is a priced option). Null when there is no label or it names no color."
+                }
+              },
+              "required": [
+                "supported",
+                "available",
+                "pdf",
+                "page",
+                "note",
+                "paint"
+              ]
+            }
+          },
+          "required": [
+            "vin",
+            "warning",
+            "vehicle",
+            "windowSticker"
+          ]
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "openWorldHint": true
+        }
+      },
+      {
+        "name": "which_makes_are_covered",
+        "title": "Which makes are covered",
+        "description": "The 20 makes that return an original factory window sticker, by source, with the model years each answers for and the last day it returned a label. Every other make gets a specification decode only.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "asOf": {
+              "type": "string"
+            },
+            "sources": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string"
+                  },
+                  "makes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "modelYears": {
+                    "type": "string"
+                  },
+                  "lastConfirmed": {
+                    "type": "string",
+                    "description": "The last day this source returned a label for a real VIN."
+                  },
+                  "note": {
+                    "type": "string"
+                  },
+                  "paused": {
+                    "type": "boolean",
+                    "description": "We have switched this source off for now."
+                  }
+                },
+                "required": [
+                  "source",
+                  "makes",
+                  "modelYears",
+                  "lastConfirmed",
+                  "note",
+                  "paused"
+                ]
+              }
+            },
+            "notes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "coverageUrl": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "asOf",
+            "sources",
+            "notes",
+            "coverageUrl"
+          ]
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "openWorldHint": true
+        }
+      },
+      {
+        "name": "why_no_sticker",
+        "title": "Why no window sticker",
+        "description": "Why a make, or a make and model year, has no window sticker here, and where to get one instead. Covers makes we get labels for (Ford only while a car is new, Toyota from 2025) and makes we don’t (Honda, Mazda, Tesla).",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "make": {
+              "type": "string",
+              "description": "Make name, such as Ford, Chevrolet or Honda."
+            },
+            "model_year": {
+              "type": "integer",
+              "description": "Model year, such as 2019. Optional; the Toyota and Lexus answer depends on it."
+            }
+          },
+          "required": [
+            "make"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "make": {
+              "type": "string"
+            },
+            "modelYear": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "supported": {
+              "type": "boolean",
+              "description": "We have a source of original labels for this make."
+            },
+            "headline": {
+              "type": "string"
+            },
+            "reason": {
+              "type": "string"
+            },
+            "steps": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "text",
+                  "url"
+                ]
+              }
+            },
+            "source": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    }
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "warning": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "moreUrl": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "make",
+            "modelYear",
+            "supported",
+            "headline",
+            "reason",
+            "steps",
+            "source",
+            "warning",
+            "moreUrl"
+          ]
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "openWorldHint": true
+        }
+      }
+    ]
+  }
+}
