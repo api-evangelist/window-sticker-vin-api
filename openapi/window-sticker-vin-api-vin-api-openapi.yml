@@ -139,3 +139,9 @@ components:
             page:
               type: string
               format: uri
+x-provenance:
+  method: harvested
+  publisher: Window Sticker VIN API
+  source: https://windowsticker.org/openapi.json
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
